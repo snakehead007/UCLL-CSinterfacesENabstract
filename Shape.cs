@@ -1,52 +1,29 @@
-using System;
-
 namespace interfacesENabstract
 {
-    public abstract class Shape: IColorObject
+    public abstract class Shape : IColorObject
     {
-        private ColorTypes colorType;
-        public ColorTypes ColorType
+        public Shape(string naam, ColorTypes colorType, int colorDepth)
         {
-            get { return colorType;}
-            set { colorType = value; }
+            ColorType = colorType;
+            ColorDepth = colorDepth;
+            Naam = naam;
         }
 
-        private int colorDepth;
-        public int ColorDepth
-        {
-            get { return colorDepth; }
-            set { colorDepth = value; }
-        }
+        public string Naam { get; set; }
 
+        public ColorTypes ColorType { get; set; }
 
-        private string naam;
-
-        public string Naam
-        {
-            get { return naam; }
-            set { naam = value; }
-        }
-        public Shape(string naam,ColorTypes colorType, int colorDepth)
-        {
-            this.colorType = colorType;
-            this.colorDepth = colorDepth;
-            this.naam = naam;
-        }
+        public int ColorDepth { get; set; }
 
         public override string ToString()
         {
-            string str = "Kleur type: "+colorType+" / Kleur Diepte "+colorDepth;
-            if (naam != null || !naam.Trim().Equals(""))
-            {
-                return "Naam: " + naam + " / " + str;
-            }
+            var str = "Kleur type: " + ColorType + " / Kleur Diepte " + ColorDepth;
+            if (Naam != null || !Naam.Trim().Equals("")) return "Naam: " + Naam + " / " + str;
 
             return str;
         }
 
         public abstract decimal GetSurface();
         public abstract decimal GetCircumference();
-        
-        
     }
 }
